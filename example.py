@@ -75,7 +75,8 @@ def run_example():
         StorageAccountCreateParameters(
             sku=Sku(name=SkuName.standard_ragrs),
             kind=Kind.storage,
-            location='westus'
+            location='westus',
+            enable_https_traffic_only=True
         )
     )
     storage_account = storage_async_operation.result()

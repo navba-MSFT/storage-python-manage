@@ -91,7 +91,13 @@ import os
 from azure.common.credentials import ServicePrincipalCredentials
 from azure.mgmt.resource import ResourceManagementClient
 from azure.mgmt.storage import StorageManagementClient
-from azure.mgmt.storage.models import StorageAccountCreateParameters
+from azure.mgmt.storage.models import (
+    StorageAccountCreateParameters,
+    StorageAccountUpdateParameters,
+    Sku,
+    SkuName,
+    Kind
+)
 
 subscription_id = os.environ.get(
     'AZURE_SUBSCRIPTION_ID',
@@ -136,7 +142,8 @@ storage_async_operation = storage_client.storage_accounts.create(
     StorageAccountCreateParameters(
         sku=Sku(name=SkuName.standard_ragrs),
         kind=Kind.storage,
-        location='westus'
+        location='westus',
+        enable_https_traffic_only=True
     )
 )
 storage_account = storage_async_operation.result()
