@@ -114,11 +114,12 @@ def run_example():
     # Regenerate the account key 1
     print('Regenerate the account key 1')
     storage_keys = storage_client.storage_accounts.regenerate_key(
-        GROUP_NAME,
-        STORAGE_ACCOUNT_NAME,
-        'key1')
-    storage_keys = {v.key_name: v.value for v in storage_keys.keys}
-    print('\tNew key 1: {}'.format(storage_keys['key1']))
+      resource_group_name=GROUP_NAME,
+      account_name=STORAGE_ACCOUNT,
+      regenerate_key=StorageAccountRegenerateKeyParameters(key_name="key1")
+    )
+    for key in storage_keys.keys:
+        print(f"{key.key_name} : {key.value}")
     print("\n\n")
 
     # Update storage account
