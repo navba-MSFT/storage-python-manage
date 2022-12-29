@@ -111,8 +111,8 @@ def run_example():
     print('\tKey 2: {}'.format(storage_keys['key2']))
     print("\n\n")
 
-    # Regenerate the account key 1
-    print('Regenerate the account key 1')
+    # Regenerate the storage account key
+    print('Regenerate the storage account key')
     storage_keys = storage_client.storage_accounts.regenerate_key(
       resource_group_name=GROUP_NAME,
       account_name=STORAGE_ACCOUNT,
